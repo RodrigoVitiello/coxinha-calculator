@@ -1,33 +1,61 @@
 <template>
-    <div class="hello">
-        <div class="input-group">
-            <label for="pessoas">Quantidade de Pessoas</label>
-            <input id="pessoas" type="number" placeholder="Pessoas" v-model.number="calculo.pessoas" />
-        </div>
+    <div class="wrapper">
+        <div class="calculo">
+            <div class="input-group">
+                <label for="pessoas">Quantidade de Pessoas</label>
+                <input
+                    id="pessoas"
+                    type="tel"
+                    placeholder="Pessoas"
+                    v-mask="'###'"
+                    v-model.number="calculo.pessoas" />
+            </div>
 
-        <div class="input-group">
-            <label for="aniversariantes">Quantidade de Aniversariantes</label>
-            <input id="aniversariantes" type="number" placeholder="Aniversariantes" v-model.number="calculo.aniversariantes" />
-        </div>
+            <div class="input-group">
+                <label for="aniversariantes">Quantidade de Aniversariantes</label>
+                <input
+                    id="aniversariantes"
+                    type="tel"
+                    placeholder="Aniversariantes"
+                    v-mask="'###'"
+                    v-model.number="calculo.aniversariantes" />
+            </div>
 
-        <div class="input-group">
-            <label for="caixas">Quantidade de Caixas</label>
-            <input id="caixas" type="number" placeholder="Caixas" v-model.number="calculo.caixas" />
-        </div>
+            <div class="input-group">
+                <label for="caixas">Quantidade de Caixas</label>
+                <input
+                    id="caixas"
+                    type="tel"
+                    placeholder="Caixas"
+                    v-mask="'###'"
+                    v-model.number="calculo.caixas" />
+            </div>
 
-        <div class="input-group">
-            <label for="quantidade-por-caixa">Quantidade por Caixa</label>
-            <input id="quantidade-por-caixa" type="number" placeholder="Quantidade por caixa" v-model.number="calculo.coxinhasPorCaixa" />
-        </div>
+            <div class="input-group">
+                <label for="quantidade-por-caixa">Quantidade por Caixa</label>
+                <input
+                    id="quantidade-por-caixa"
+                    type="tel"
+                    placeholder="Quantidade por caixa"
+                    v-mask="'###'"
+                    v-model.number="calculo.coxinhasPorCaixa" />
+            </div>
 
-        <div class="input-group">
-            <label for="valor-caixa">Valor da Caixa</label>
-            <input id="valor-caixa" type="number" placeholder="Valor da Caixa" v-model.number="calculo.valorCaixa" />
-        </div>
+            <div class="input-group">
+                <label for="valor-caixa">Valor da Caixa</label>
+                <money
+                    id="valor-caixa"
+                    v-model.number="calculo.valorCaixa"
+                    v-bind="moneyCfg" />
+            </div>
 
-        <div class="input-group">
-            <label for="valor-entrega">Valor da Entrega</label>
-            <input id="valor-entrega" type="number" placeholder="Valor da Entrega" v-model.number="calculo.valorEntrega" />
+            <div class="input-group">
+                <label for="valor-entrega">Valor da Entrega</label>
+                <money
+                    id="valor-entrega"
+                    v-model.number="calculo.valorEntrega"
+                    v-bind="moneyCfg" />
+            </div>
         </div>
 
         <hr />
@@ -35,18 +63,25 @@
         <div class="resultado">
             <h2>Resultado</h2>
             <div>
-                Valor por pessoa: <span>{{ resultado.valorIndividual }}</span>
+                Valor por pessoa:
+                <span v-if="isFinite(this.resultado.valorIndividual)">{{ valorIndividual }}</span>
+              <span v-else>--</span>
             </div>
             <div>
-                Coxinhas por pessoa: <span>{{ resultado.coxinhasIndividual }}</span>
+                Coxinhas por pessoa:
+                <span v-if="isFinite(this.resultado.coxinhasIndividual)">{{ this.resultado.coxinhasIndividual }}</span>
+                <span v-else>--</span>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { Money } from 'v-money';
+import { mask } from 'vue-the-mask';
+
 export default {
-  name: 'CoxinhaCalculator',
+    name: 'CoxinhaCalculator',
     data () {
         return {
             calculo: {
@@ -60,31 +95,55 @@ export default {
             resultado: {
                 valorIndividual: 0,
                 coxinhasIndividual: 0
+            },
+            moneyCfg: {
+                decimal: ',',
+                thousands: '.',
+                prefix: 'R$ ',
+                precision: 2,
+                masked: false
             }
-        }
+        };
     },
     created () {
         this.calculate();
     },
+    computed: {
+        valorIndividual: function () {
+            return this.toMoney(this.resultado.valorIndividual);
+        }
+    },
     watch: {
         calculo: {
-            handler: function() {
+            handler: function () {
                 this.calculate();
             },
             deep: true
         }
     },
     methods: {
-        calculate() {
+        calculate () {
             const valorPedido = (this.calculo.valorCaixa * this.calculo.caixas) + this.calculo.valorEntrega;
-            const pessoas =  this.calculo.pessoas - this.calculo.aniversariantes;
+            const pessoas = this.calculo.pessoas - this.calculo.aniversariantes;
             this.resultado.valorIndividual = valorPedido / pessoas;
 
-            const coxinhasPorCaixa = this.calculo.coxinhasPorCaixa * this.calculo.caixas
+            const coxinhasPorCaixa = this.calculo.coxinhasPorCaixa * this.calculo.caixas;
             this.resultado.coxinhasIndividual = coxinhasPorCaixa / this.calculo.pessoas;
+        },
+        toMoney (money) {
+            return ("R$ " + parseFloat(money).toFixed(2))
+                        .replace(".", ",")
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
         }
     },
-}
+    components: {
+        Money
+    },
+    directives: {
+        mask
+    }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

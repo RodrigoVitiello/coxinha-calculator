@@ -3,9 +3,9 @@
 ## To do
 - [x] Cálculo de valor por pessoa
 - [x] Cálculo de quantidade por pessoa
-- [] Máscara de Valores
-- [] Não permitir números negativos
-- [] Aplicar visual (CSS)
+- [x] Máscara de Valores
+- [x] Não permitir números negativos
+- [ ] Aplicar visual (CSS)
 
 
 > A Vue.js project
