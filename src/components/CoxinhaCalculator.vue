@@ -58,16 +58,14 @@
             </div>
         </div>
 
-        <hr />
-
         <div class="resultado">
             <h2>Resultado</h2>
-            <div>
+            <div class="text-group">
                 Valor por pessoa:
                 <span v-if="isFinite(this.resultado.valorIndividual)">{{ valorIndividual }}</span>
               <span v-else>--</span>
             </div>
-            <div>
+            <div class="text-group">
                 Coxinhas por pessoa:
                 <span v-if="isFinite(this.resultado.coxinhasIndividual)">{{ this.resultado.coxinhasIndividual }}</span>
                 <span v-else>--</span>
@@ -148,18 +146,43 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+h2 {
+    font-size: 30px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.wrapper {
+    margin: auto;
+    width: 50%;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+.input-group {
+    margin-bottom: 15px;
 }
-a {
-  color: #42b983;
+
+.input-group label {
+    display: block;
+    text-align: left;
+    font-size: small;
+}
+
+.input-group input {
+    padding: 10px 0;
+    border-radius: 3px;
+    width: 100%;
+    border-style: groove;
+    display: inline;
+    text-align: center;
+    font-size: 20px;
+}
+
+.resultado {
+    margin: 60px 0;
+}
+.text-group {
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+.text-group span {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 </style>

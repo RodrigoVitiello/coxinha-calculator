@@ -5,7 +5,7 @@
 - [x] Cálculo de quantidade por pessoa
 - [x] Máscara de Valores
 - [x] Não permitir números negativos
-- [ ] Aplicar visual (CSS)
+- [x] Aplicar visual (CSS)
 
 
 > A Vue.js project
