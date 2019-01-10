@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+
+  app:
+    container_name: coxinha-calculator
+    build:
+      context: .
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '8080:8080'
