@@ -129,10 +129,9 @@ export default {
             this.resultado.coxinhasIndividual = coxinhasPorCaixa / this.calculo.pessoas;
         },
         toMoney (money) {
-            return ("R$ " + parseFloat(money).toFixed(2))
-                        .replace(".", ",")
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
+            return ('R$ ' + parseFloat(money).toFixed(2))
+                .replace('.', ',')
+                .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
         }
     },
     components: {

@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import CoxinhaCalculator from './components/CoxinhaCalculator'
+import CoxinhaCalculator from './components/CoxinhaCalculator';
 
 export default {
-  name: 'App',
-  components: {
-    CoxinhaCalculator
-  }
-}
+    name: 'App',
+    components: {
+        CoxinhaCalculator
+    }
+};
 </script>
 
 <style>
