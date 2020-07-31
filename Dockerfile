@@ -1,12 +1,15 @@
-# base image
-FROM node:10.15.0
+FROM node:13.12.0-alpine
 
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /app
 
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-COPY package.json /usr/src/app/package.json
-RUN yarn install --silent
+# install app dependencies
+COPY package.json ./
+COPY yarn.lock ./
+RUN npm install
+RUN npm install react-scripts@3.4.1 -g
+
+COPY . ./
 
 CMD ["yarn", "start"]
