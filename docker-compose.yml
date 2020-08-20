@@ -1,8 +1,7 @@
 version: '3.7'
 
 services:
-
-  sample:
+  app:
     container_name: coxinha-calculator
     stdin_open: true
     build:
