@@ -1,0 +1,26 @@
+.number-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
+
+  label {
+    color: gray;
+    font-size: 12px;
+    flex-grow: 2;
+    width: 200px;
+  }
+
+  input[type=text] {
+    padding: 10px;
+    border: 0;
+    flex-grow: 99;
+    &:focus {
+      outline-width: 0;
+    }
+  }
+}

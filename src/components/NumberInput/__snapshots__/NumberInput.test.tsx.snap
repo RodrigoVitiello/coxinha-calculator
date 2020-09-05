@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NumberInput renders number input component 1`] = `
+<div>
+  <div
+    class="number-input-container"
+  >
+    <label
+      for="number-label-npmljw"
+    >
+      my input
+    </label>
+    <input
+      aria-label="number-input"
+      id="number-label-npmljw"
+      type="text"
+      value="57"
+    />
+  </div>
+</div>
+`;
