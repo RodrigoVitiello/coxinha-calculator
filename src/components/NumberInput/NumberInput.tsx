@@ -29,7 +29,7 @@ class NumberInput extends Component<INumberInputProps, INumberInputState> {
     if (value.match(/^\d+$/g)) {
       const newValue = Number(value)
       await this.setState({currentValue: newValue})
-    } else if (value.length == 0) {
+    } else if (value.length === 0) {
       await this.setState({currentValue: 0})
     }
 

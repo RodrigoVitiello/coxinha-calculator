@@ -6,15 +6,15 @@ exports[`NumberInput renders number input component 1`] = `
     class="number-input-container"
   >
     <label
-      for="number-label-npmljw"
+      for="number-label-qdkvzofo"
     >
       my input
     </label>
     <input
       aria-label="number-input"
-      id="number-label-npmljw"
+      id="number-label-qdkvzofo"
       type="text"
-      value="57"
+      value="15"
     />
   </div>
 </div>
