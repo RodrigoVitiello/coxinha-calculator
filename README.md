@@ -1,11 +1,12 @@
 # coxinha-calculator
 
 ## To do
-- [ ] Cálculo de valor por pessoa
-- [ ] Cálculo de quantidade por pessoa
-- [ ] Máscara de Valores
-- [ ] Não permitir números negativos
+- [ ] Cálculo de quantas caixas pelo número de coxinhas por pessoa
+- [ ] Máscara de valores nos inputs
 - [ ] Aplicar visual (CSS)
+- [X] Cálculo de valor por pessoa
+- [X] Cálculo de quantidade por pessoa
+- [X] Não permitir números negativos
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
