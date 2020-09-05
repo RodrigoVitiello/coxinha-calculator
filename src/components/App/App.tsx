@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.scss';
 import Logo from '../Logo/Logo';
+import Calculator from '../Calculator/Calculator';
 
-const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Logo />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface IAppProps {}
+interface IAppState {}
+class App extends Component<IAppProps, IAppState> {
+  constructor(props: IAppProps) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <Logo />
+          <h1>Calculadora de Coxinhas</h1>
+        </header>
+
+        <Calculator />
+      </div>
+    );
+  }
 }
 
 export default App;
