@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders coxinhas logo component 1`] = `
+<div>
+  <img
+    alt="rotating-coxinhas"
+    class="logo"
+    src="logo.png"
+  />
+</div>
+`;
