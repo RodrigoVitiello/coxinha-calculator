@@ -3,6 +3,7 @@
 ## To do
 - [ ] Cálculo de quantas caixas pelo número de coxinhas por pessoa
 - [ ] Máscara de valores nos inputs
+- [ ] Não exibir `NaN` ou `Infinity` como resultado no caso de números inválidos nos inputs
 - [ ] Aplicar visual (CSS)
 - [X] Cálculo de valor por pessoa
 - [X] Cálculo de quantidade por pessoa
