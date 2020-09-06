@@ -10,6 +10,11 @@ interface ICalculatorState {
   coxinhasData: ICoxinhasData
 }
 
+type orderedCoxinhaDataType = {
+  key: string,
+  labelText: string
+}
+
 class Calculator extends Component<ICalculatorProps, ICalculatorState> {
   constructor(props: ICalculatorProps) {
     super(props)
@@ -28,14 +33,22 @@ class Calculator extends Component<ICalculatorProps, ICalculatorState> {
   }
 
   renderNumberInputs() {
+    const orderedCoxinhasData: Array<orderedCoxinhaDataType> = [
+      { key: 'peopleCount', labelText: 'Total de pessoas' },
+      { key: 'birthdayPeopleCount', labelText: 'Total de aniversariantes' },
+      { key: 'boxesCount', labelText: 'Quantidade de caixas' },
+      { key: 'coxinhasPerBox', labelText: 'Coxinhas por caixa' },
+      { key: 'boxPrice', labelText: 'Valor da caixa' },
+      { key: 'deliveryPrice', labelText: 'Valor da entrega' },
+    ]
     const { coxinhasData } = this.state
-    return Object.keys(coxinhasData).map((key: string, index: number) => {
+    return orderedCoxinhasData.map((coxinhasInfo: orderedCoxinhaDataType, index: number) => {
       return (
         <NumberInput
           key={index}
-          labelText={key}
-          defaultValue={coxinhasData[key]}
-          handleOnChange={(value: number) => { this.handleInputUpdate(key, value)}}
+          labelText={coxinhasInfo.labelText}
+          defaultValue={coxinhasData[coxinhasInfo.key]}
+          handleOnChange={(value: number) => { this.handleInputUpdate(coxinhasInfo.key, value)}}
         />
       )
     })
