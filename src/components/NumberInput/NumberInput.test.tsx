@@ -76,5 +76,25 @@ describe('NumberInput', () => {
       fireEvent.change(input, { target: { value: '' } })
       expect(input).toHaveValue('0')
     })
+
+    describe('decimal places', () => {
+      it('allows comma as separator', () => {
+        const { container } = render(component)
+        const input = container.querySelector(inputQuery)
+
+        fireEvent.change(input, { target: { value: '10,2' } })
+
+        expect(input).toHaveValue('10.2')
+      })
+
+      it('allows dot as separator', () => {
+        const { container } = render(component)
+        const input = container.querySelector(inputQuery)
+
+        fireEvent.change(input, { target: { value: '10.2' } })
+
+        expect(input).toHaveValue('10.2')
+      })
+    })
   })
 })

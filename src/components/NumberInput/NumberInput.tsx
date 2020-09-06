@@ -9,7 +9,7 @@ interface INumberInputProps {
 }
 
 interface INumberInputState {
-  currentValue: number
+  currentValue: string
 }
 
 class NumberInput extends Component<INumberInputProps, INumberInputState> {
@@ -17,23 +17,23 @@ class NumberInput extends Component<INumberInputProps, INumberInputState> {
     super(props)
 
     this.state = {
-      currentValue: 0
+      currentValue: '0'
     }
   }
 
   componentDidMount() {
-    this.setState({currentValue: this.props.defaultValue})
+    this.setState({currentValue: String(this.props.defaultValue)})
   }
 
   async handleInputValue(value: string) {
-    if (value.match(/^\d+$/g)) {
-      const newValue = Number(value)
-      await this.setState({currentValue: newValue})
+
+    if (value.match(/^\d+[.,]?(\d+)?$/g)) {
+      await this.setState({currentValue: value.replace(',', '.')})
     } else if (value.length === 0) {
-      await this.setState({currentValue: 0})
+      await this.setState({currentValue: '0'})
     }
 
-    this.props.handleOnChange(this.state.currentValue)
+    this.props.handleOnChange(Number(this.state.currentValue))
   }
 
   render() {
