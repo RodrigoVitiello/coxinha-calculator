@@ -1,7 +1,10 @@
 # coxinha-calculator
 
+[![Build Status](https://travis-ci.org/RodrigoVitiello/coxinha-calculator.svg?branch=master)](https://travis-ci.org/RodrigoVitiello/coxinha-calculator)
+
 ## To do
 - [ ] Cálculo de quantas caixas pelo número de coxinhas por pessoa
+- [ ] Adicionar testes para os componentes `App` e `Calculator`
 - [ ] Máscara de valores nos inputs
 - [ ] Não exibir `NaN` ou `Infinity` como resultado no caso de números inválidos nos inputs
 - [ ] Aplicar visual (CSS)
