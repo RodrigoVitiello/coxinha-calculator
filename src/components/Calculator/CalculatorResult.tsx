@@ -9,15 +9,23 @@ const CalculatorResult = (props: ICalculatorResultProps) => {
   const { coxinhasPerPerson, pricePerPerson } = props.coxinhasResult
 
   const parsedCoxinhasPerPerson = (): string => {
+    if (!isFinite(coxinhasPerPerson)) return '--'
+
     return String(Math.round(coxinhasPerPerson * 100) / 100)
   }
   const parsedPricePerPerson = (): string => {
+    if (!isFinite(pricePerPerson)) return 'R$ -----'
+
     return `R$ ${pricePerPerson.toFixed(2).replace('.', ',')}`
   }
   return (
     <div className='result'>
-      <p>Coxinhas por Pessoa: <span>{parsedCoxinhasPerPerson()}</span></p>
-      <p>Valor por Pessoa: <span>{parsedPricePerPerson()}</span></p>
+      <p className='coxinhas-per-person'>
+        Coxinhas por Pessoa: <span>{parsedCoxinhasPerPerson()}</span>
+      </p>
+      <p className='price-per-person'>
+        Valor por Pessoa: <span>{parsedPricePerPerson()}</span>
+      </p>
     </div>
   )
 }

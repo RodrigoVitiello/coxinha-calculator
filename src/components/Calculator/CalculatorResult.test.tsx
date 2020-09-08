@@ -35,4 +35,18 @@ describe('CalculatorResult', () => {
 
     expect(getByText('50')).toBeInTheDocument()
   })
+
+  it('renders "--" when there is an invalid value', () => {
+    coxinhasResult.coxinhasPerPerson = NaN
+    const { container } = render(<CalculatorResult coxinhasResult={coxinhasResult} />);
+
+    expect(container.querySelector('.coxinhas-per-person')).toHaveTextContent('--')
+  })
+
+  it('renders "--" when there is an invalid value', () => {
+    coxinhasResult.pricePerPerson = Infinity
+    const { container } = render(<CalculatorResult coxinhasResult={coxinhasResult} />);
+
+    expect(container.querySelector('.price-per-person')).toHaveTextContent('R$ -----')
+  })
 });
