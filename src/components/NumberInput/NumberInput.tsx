@@ -28,7 +28,7 @@ class NumberInput extends Component<INumberInputProps, INumberInputState> {
   async handleInputValue(value: string) {
 
     if (value.match(/^\d+[.,]?(\d+)?$/g)) {
-      await this.setState({currentValue: value.replace(',', '.')})
+      await this.setState({currentValue: value.replace(/^0+/, '').replace(',', '.')})
     } else if (value.length === 0) {
       await this.setState({currentValue: '0'})
     }

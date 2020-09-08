@@ -77,6 +77,14 @@ describe('NumberInput', () => {
       expect(input).toHaveValue('0')
     })
 
+    it('remove trailing 0\'s from input', () => {
+      const { container } = render(component)
+      const input = container.querySelector(inputQuery)
+      fireEvent.change(input, { target: { value: '045' } })
+
+      expect(input).toHaveValue('45')
+    })
+
     describe('decimal places', () => {
       it('allows comma as separator', () => {
         const { container } = render(component)
